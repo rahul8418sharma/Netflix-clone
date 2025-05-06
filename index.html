@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#e50914',
+            dark: '#141414',
+          },
+          fontFamily: {
+            sans: ['Helvetica Neue', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-black text-white transition-colors duration-500" id="body">
+
+  <!-- Navbar -->
+  <header class="fixed w-full top-0 z-50 bg-gradient-to-b from-black/90 to-transparent">
+    <div class="flex justify-between items-center px-6 py-4">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix" class="h-10">
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-6 text-sm" id="desktopNav">
+        <a href="#" class="hover:text-netflix">Home</a>
+        <a href="#" class="hover:text-netflix">TV Shows</a>
+        <a href="#" class="hover:text-netflix">Movies</a>
+        <a href="#" class="hover:text-netflix">New & Popular</a>
+        <a href="#" class="hover:text-netflix">My List</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button id="hamburgerBtn" class="text-2xl">☰</button>
+      </div>
+
+      <!-- Buttons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <button id="modeToggle" class="text-lg p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition" title="Toggle Theme">🌙</button>
+        <a href="login.html" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-netflix hover:text-white transition">Login</a>
+        <a href="signup.html" class="text-sm bg-netflix px-3 py-1 rounded hover:bg-white hover:text-netflix transition">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-black px-6 py-4 space-y-2">
+      <a href="#" class="block hover:text-netflix">Home</a>
+      <a href="#" class="block hover:text-netflix">TV Shows</a>
+      <a href="#" class="block hover:text-netflix">Movies</a>
+      <a href="#" class="block hover:text-netflix">New & Popular</a>
+      <a href="#" class="block hover:text-netflix">My List</a>
+      <div class="flex items-center gap-2 mt-4">
+        <button id="modeToggleMobile" class="text-lg p-2 bg-gray-700 rounded-full hover:bg-gray-600 transition">🌙</button>
+        <a href="login.html" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-netflix">Login</a>
+        <a href="signup.html" class="text-sm bg-netflix px-3 py-1 rounded hover:bg-white hover:text-netflix">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[90vh] bg-cover bg-center flex items-end justify-start p-10" style="background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/7b9d5fef-cb3a-44be-8161-c3f5a6b66c36/5073d7d0-e1a4-498b-a1e5-d2f52b893cf5/IN-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg');">
+    <div class="max-w-xl space-y-4">
+      <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg">Unlimited Movies, TV Shows & More.</h1>
+      <p class="text-lg md:text-xl">Watch anywhere. Cancel anytime.</p>
+      <button class="bg-netflix px-6 py-3 rounded text-white font-semibold hover:bg-white hover:text-netflix transition">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Movie Rows -->
+  <section class="px-6 space-y-10 my-10">
+    <div>
+      <h2 class="text-xl font-semibold mb-2">Trending Now</h2>
+      <div class="flex overflow-x-scroll space-x-4 scrollbar-hide">
+        <img src="https://picsum.photos/200/300?random=1" class="h-40 w-28 object-cover rounded hover:scale-105 transition cursor-pointer" onclick="openModal('Trending Movie 1', 'This is the trending movie description...')" />
+        <img src="https://picsum.photos/200/300?random=2" class="h-40 w-28 object-cover rounded hover:scale-105 transition cursor-pointer" onclick="openModal('Trending Movie 2', 'Another trending movie...')" />
+        <img src="https://picsum.photos/200/300?random=3" class="h-40 w-28 object-cover rounded hover:scale-105 transition cursor-pointer" onclick="openModal('Trending Movie 3', 'A third trending movie...')" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 text-sm text-center py-8 mt-10 border-t border-gray-700">
+    <p>&copy; 2025 Netflix Clone — Built by Your Name</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="movieModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
+    <div class="bg-black p-6 rounded-lg text-white max-w-lg w-full relative">
+      <h3 class="text-2xl font-bold mb-2" id="movieTitle">Movie Title</h3>
+      <p id="movieDescription" class="text-sm mb-4">Movie Description...</p>
+      <button class="w-full p-3 bg-netflix text-white font-semibold rounded hover:bg-red-600 transition" onclick="closeModal()">Watch Now</button>
+      <button class="absolute top-2 right-2 text-white text-xl" onclick="closeModal()">×</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

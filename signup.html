@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up | Netflix Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflix: '#e50914',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/7b9d5fef-cb3a-44be-8161-c3f5a6b66c36/5073d7d0-e1a4-498b-a1e5-d2f52b893cf5/IN-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-black/80 text-white min-h-screen flex items-center justify-center backdrop-blur-md">
+
+  <div class="relative w-full max-w-md p-8 bg-black/70 rounded-lg shadow-xl animate-fade-in">
+    
+    <!-- Home Button -->
+    <a href="index.html" class="absolute top-4 left-4 text-white text-sm hover:underline">
+      ← Home
+    </a>
+
+    <h2 class="text-3xl font-bold mb-6 text-center">Sign Up</h2>
+    
+    <form action="#" method="POST" class="space-y-4">
+      <input type="text" placeholder="Full Name" class="w-full p-3 bg-gray-800 rounded text-white focus:ring-2 focus:ring-netflix transition" required>
+      <input type="email" placeholder="Email" class="w-full p-3 bg-gray-800 rounded text-white focus:ring-2 focus:ring-netflix transition" required>
+      <input type="password" placeholder="Password" class="w-full p-3 bg-gray-800 rounded text-white focus:ring-2 focus:ring-netflix transition" required>
+      <button class="w-full p-3 bg-netflix hover:bg-red-700 rounded text-white font-semibold transition">Create Account</button>
+    </form>
+
+    <p class="text-sm text-gray-400 text-center mt-6">
+      Already have an account? 
+      <a href="login.html" class="text-white hover:underline">Log In</a>
+    </p>
+  </div>
+
+  <!-- Fade animation -->
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out;
+    }
+  </style>
+  <script src="signup.js"></script>
+
+</body>
+</html>
